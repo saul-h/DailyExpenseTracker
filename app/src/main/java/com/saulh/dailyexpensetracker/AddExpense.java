@@ -20,7 +20,6 @@ public class AddExpense extends AppCompatActivity {
         setContentView(R.layout.activity_add_expense);
 
         mAddExpense = findViewById(R.id.imgButtonSave);
-
         mExpenseName = findViewById(R.id.editTextExpenseName);
         mExpenseAmount = findViewById(R.id.editTextAmount);
         mExpenseDate = findViewById(R.id.editTextDate);

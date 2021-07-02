@@ -6,10 +6,12 @@ import androidx.room.Query;
 
 import com.saulh.dailyexpensetracker.entities.Expense;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Dao
 public interface ExpenseDao {
+
     @Insert
     void insertExpense(Expense expense);
 
