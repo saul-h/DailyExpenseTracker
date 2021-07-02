@@ -9,14 +9,15 @@ import java.util.Date;
 @Entity
 public class Expense {
     @PrimaryKey(autoGenerate = true)
-    int expenseID;
+    public int expenseID;
 
     @ColumnInfo
-    String description;
+    public int creatorUsername;
 
     @ColumnInfo
-    double amount;
+    public String description;
 
     @ColumnInfo
-    Date date;
+    public double amount;
+
 }

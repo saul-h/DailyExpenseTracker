@@ -1,20 +1,26 @@
 package com.saulh.dailyexpensetracker.entities;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
 public class User {
-    @PrimaryKey(autoGenerate = true)
-    Integer uid;
+    @PrimaryKey
+    @NonNull
+    public String username;
 
     @ColumnInfo
-    String email;
+    public String email;
 
     @ColumnInfo
-    String name;
+    public String password;
 
     @ColumnInfo
-    String password;
+    public double annualIncome;
+
+    @ColumnInfo
+    public double desiredSavings;
+
 }
