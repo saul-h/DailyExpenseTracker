@@ -22,6 +22,8 @@ public class LoginActivity extends AppCompatActivity {
 
     User user;
 
+    public static final String LOGGED_IN_USERNAME = "com.saulh.dailyexpensetracker.USERNAME";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
             if (user != null) {
                 mEditTextPassword.setText("");
                 Intent intent = new Intent(context, MainActivity.class);
-                intent.putExtra("username", user.username);
+                intent.putExtra(LOGGED_IN_USERNAME, user.username);
                 startActivity(intent);
             }
         });

@@ -38,8 +38,6 @@ public class RegisterActivity extends AppCompatActivity {
         mEditTextPassword = findViewById(R.id.editTextRegPassword);
         mEditTextReenterPass = findViewById(R.id.editTextReenterPassword);
 
-
-
         mBtnRegister.setOnClickListener(v -> {
             if (inputIsValid()) {
                 registerUser();
