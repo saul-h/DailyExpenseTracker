@@ -9,11 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DailyExpenseTracker">
-        <activity
-            android:name=".RegisterActivity"
-            android:label="Registration"
-            android:parentActivityName=".LoginActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".Spashscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,11 +17,17 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".RegisterActivity"
+            android:label="Registration"
+            android:parentActivityName=".LoginActivity" />
+        <activity android:name=".LoginActivity">
+
+        </activity>
+        <activity
             android:name=".AddExpense"
             android:label="@string/add_expense"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity">
-        </activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
