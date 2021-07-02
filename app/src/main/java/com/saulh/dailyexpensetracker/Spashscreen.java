@@ -24,9 +24,5 @@ public class Spashscreen extends AppCompatActivity {
                 finish(); //kill this activity
             }
         }, SPLASH_TIME_OUT);
-
-
-
-
     }
 }
