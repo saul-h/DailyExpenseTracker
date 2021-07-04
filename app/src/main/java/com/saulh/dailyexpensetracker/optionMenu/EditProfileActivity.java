@@ -21,7 +21,7 @@ public class EditProfileActivity extends AppCompatActivity implements ChangePass
 
     private static final String TAG = "MyActivity";
     private String username, new_password;
-    TextView textView_username, textView_email;
+    TextView textView_username, textView_email, textView_hi;
     Context context;
 
     AppDatabase db;
@@ -31,10 +31,14 @@ public class EditProfileActivity extends AppCompatActivity implements ChangePass
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Edit Profile");
+
         setContentView(R.layout.activity_edit_profile);
         Button change_password = findViewById(R.id.button_change_password);
         textView_username = findViewById(R.id.textView_username);
         textView_email = findViewById(R.id.textView_email);
+        textView_hi = findViewById(R.id.textView_hi);
         //
         //email.setText(LoginActivity.user.email);
 
@@ -48,6 +52,7 @@ public class EditProfileActivity extends AppCompatActivity implements ChangePass
         Log.d(TAG,user.email);
         textView_username.setText((String) user.username);
         textView_email.setText((String) user.email);
+        textView_hi.setText("Hi, " + user.username + "!");
 
         change_password.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,8 +71,8 @@ public class EditProfileActivity extends AppCompatActivity implements ChangePass
     public void applyText(String new_password) {
         this.new_password = new_password;
         user.password = this.new_password;
+        db.userDao().updateUser(user);
         Log.d(TAG,user.password);
-
         //Toast.makeText(getApplicationContext(),new_password,Toast.LENGTH_SHORT).show();
     }
 }

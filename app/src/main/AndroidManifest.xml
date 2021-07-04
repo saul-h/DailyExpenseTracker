@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DailyExpenseTracker">
-        <activity android:name=".optionMenu.EditProfileActivity"></activity>
+        <activity
+            android:name=".optionMenu.EditProfileActivity"
+            android:parentActivityName=".MainActivity"></activity>
         <activity
             android:name=".optionMenu.AboutActivity"
             android:parentActivityName=".MainActivity" />

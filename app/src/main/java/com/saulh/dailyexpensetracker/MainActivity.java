@@ -80,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(getApplicationContext(), AboutActivity.class);
                 startActivity(intent);
                 return true;
+            case R.id.logout:
+                Log.d(TAG,"logout is clickred");
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
