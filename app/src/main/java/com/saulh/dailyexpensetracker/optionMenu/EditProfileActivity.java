@@ -40,7 +40,7 @@ public class EditProfileActivity extends AppCompatActivity implements ChangePass
 
         username = LoginActivity.mEditTextUsername.getText().toString();
 
-
+        //get database instance
         db = AppDatabase.getDBInstance(context);
         userDao = db.userDao();
         user = userDao.getUserByUsername(username);
@@ -67,7 +67,7 @@ public class EditProfileActivity extends AppCompatActivity implements ChangePass
         this.new_password = new_password;
         user.password = this.new_password;
         Log.d(TAG,user.password);
-        
+
         //Toast.makeText(getApplicationContext(),new_password,Toast.LENGTH_SHORT).show();
     }
 }
