@@ -2,17 +2,21 @@ package com.saulh.dailyexpensetracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.saulh.dailyexpensetracker.daos.ExpenseDao;
-import com.saulh.dailyexpensetracker.daos.UserDao;
 import com.saulh.dailyexpensetracker.entities.Expense;
 
 public class AddExpense extends AppCompatActivity {
     EditText mExpenseName, mExpenseAmount, mExpenseDate;
     ImageButton mAddExpense;
+    AppDatabase db;
+    ExpenseDao expenseDao;
+    Expense expense;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,15 +28,20 @@ public class AddExpense extends AppCompatActivity {
         mExpenseAmount = findViewById(R.id.editTextAmount);
         mExpenseDate = findViewById(R.id.editTextDate);
 
+        db = AppDatabase.getDBInstance(getApplicationContext());
+        expenseDao = db.expenseDao();
+
+
         mAddExpense.setOnClickListener(v -> {
-            AppDatabase db = AppDatabase.getDBInstance(getApplicationContext());
-            ExpenseDao expenseDao = db.expenseDao();
-            Expense expense = new Expense();
-            expense.description = mExpenseAmount.getText().toString();
+            expense = new Expense();
+            expense.description = (String)mExpenseAmount.getText().toString();
             expense.amount = Double.parseDouble(mExpenseAmount.getText().toString());
-            expense.date = mExpenseDate.getText().toString();
-            expense.creatorUsername = getIntent().getStringExtra(LoginActivity.LOGGED_IN_USERNAME);
+            expense.date = (String)mExpenseDate.getText().toString();
+            expense.creatorUsername = (String) getIntent().getStringExtra(LoginActivity.LOGGED_IN_USERNAME);
             expenseDao.insertExpense(expense);
+
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
         });
     }
 }

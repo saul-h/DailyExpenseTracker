@@ -2,11 +2,13 @@ package com.saulh.dailyexpensetracker;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     String username;
     List<Expense> userExpenseList;
     public static AppDatabase db;
+    User user;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         userExpenseList = expenseDao.getExpensesForUser(username);
 
+
         mFAB = findViewById(R.id.floatingActionButton);
 
 
@@ -56,12 +61,26 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra(LoginActivity.LOGGED_IN_USERNAME, username);
             startActivity(intent);
         });
+
+        recyclerView = findViewById(R.id.recyclerViewExpenses);
+
+
+        //TODO: fix the bug here where userExpensList is alwasy empty
+        if(!userExpenseList.isEmpty()){
+            //add to list the recycler view
+            MyAdapter myAdapter = new MyAdapter(getApplicationContext(),userExpenseList );
+            recyclerView.setAdapter(myAdapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        }else{
+            Log.d(TAG, "List is empty");
+        }
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.options_menu, menu);
+        inflater.inflate(R.menu.options_menu, menu); //set option menu to our own option menu
         return true;
     }
 
@@ -97,5 +116,18 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
 
+
     }
+
+
+
+    private class NewThread extends AsyncTask<Void, Void, Void>{
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            return null;
+        }
+    }
+
 }

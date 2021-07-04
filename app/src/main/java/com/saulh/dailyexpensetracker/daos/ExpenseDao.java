@@ -14,7 +14,7 @@ public interface ExpenseDao {
     @Insert
     void insertExpense(Expense expense);
 
-    @Query("SELECT * FROM expense WHERE expense.creatorUsername LIKE :username")
+    @Query("SELECT * FROM expense WHERE expense.creatorUsername = :username")
     List<Expense> getExpensesForUser(String username);
 
 
