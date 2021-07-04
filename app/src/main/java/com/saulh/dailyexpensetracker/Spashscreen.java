@@ -3,6 +3,7 @@ package com.saulh.dailyexpensetracker;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -19,9 +20,20 @@ public class Spashscreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-                finish(); //kill this activity
+                SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.PREFS_NAME, 0);
+                boolean hasLoggedIn = sharedPreferences.getBoolean("hasLoggedIn", false);
+
+                if(hasLoggedIn){
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                    finish(); //kill this activity
+                }else{
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                    finish(); //kill this activity
+                }
+
+
             }
         }, SPLASH_TIME_OUT);
     }

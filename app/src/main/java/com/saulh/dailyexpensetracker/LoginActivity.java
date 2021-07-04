@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +16,10 @@ import com.saulh.dailyexpensetracker.entities.User;
 import java.io.Serializable;
 
 public class LoginActivity extends AppCompatActivity {
+
+    public static String PREFS_NAME = "MyPrefsFile";
+
+
     Button mBtnLogin, mBtnRegister;
     public static EditText mEditTextUsername;
     private EditText mEditTextPassword;
@@ -39,6 +44,13 @@ public class LoginActivity extends AppCompatActivity {
         mEditTextPassword = findViewById(R.id.editTextLoginPassword);
 
         mBtnLogin.setOnClickListener(v -> {
+
+            //set hasLoggedIn to true to keep user logged in
+            SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.PREFS_NAME,0);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("hasLoggedIn", true);
+            editor.commit();
+
             user = loginWithCredentials(mEditTextUsername.getText().toString(),
                     mEditTextPassword.getText().toString());
             if (user != null) {

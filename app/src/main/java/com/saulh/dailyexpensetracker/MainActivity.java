@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -82,6 +83,15 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.logout:
                 Log.d(TAG,"logout is clickred");
+
+                //this block of code set to logout
+                SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.PREFS_NAME,0);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("hasLoggedIn", false);
+                editor.commit();
+
+                intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
