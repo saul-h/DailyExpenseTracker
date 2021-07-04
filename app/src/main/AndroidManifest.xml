@@ -9,6 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DailyExpenseTracker">
+        <activity android:name=".optionMenu.EditProfileActivity"></activity>
+        <activity
+            android:name=".optionMenu.AboutActivity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".Spashscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,14 +24,12 @@
             android:name=".RegisterActivity"
             android:label="Registration"
             android:parentActivityName=".LoginActivity" />
-        <activity android:name=".LoginActivity">
-
-        </activity>
+        <activity android:name=".LoginActivity" />
         <activity
             android:name=".AddExpense"
             android:label="@string/add_expense"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

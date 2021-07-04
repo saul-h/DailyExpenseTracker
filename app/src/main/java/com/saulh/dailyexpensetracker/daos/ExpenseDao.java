@@ -6,7 +6,6 @@ import androidx.room.Query;
 
 import com.saulh.dailyexpensetracker.entities.Expense;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Dao
@@ -17,4 +16,6 @@ public interface ExpenseDao {
 
     @Query("SELECT * FROM expense WHERE expense.creatorUsername LIKE :username")
     List<Expense> getExpensesForUser(String username);
+
+
 }

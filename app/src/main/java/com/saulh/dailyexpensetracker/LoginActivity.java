@@ -16,11 +16,12 @@ import java.io.Serializable;
 
 public class LoginActivity extends AppCompatActivity {
     Button mBtnLogin, mBtnRegister;
-    EditText mEditTextUsername, mEditTextPassword;
+    public static EditText mEditTextUsername;
+    private EditText mEditTextPassword;
 
     Context context;
 
-    User user;
+    public User user;
 
     public static final String LOGGED_IN_USERNAME = "com.saulh.dailyexpensetracker.USERNAME";
 

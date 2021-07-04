@@ -92,10 +92,10 @@ public class RegisterActivity extends AppCompatActivity {
             mEditTextPassword.setError("Password cannot be empty");
             isValid = false;
         } else if (passwordInput.length() < 6) {
-            mEditTextEmail.setError("Password should be at least 6 characters");
+            mEditTextPassword.setError("Password should be at least 6 characters");
             isValid = false;
         } else {
-            mEditTextEmail.setError(null);
+            mEditTextPassword.setError(null);
         }
 
         if (!passwordReenterInput.equals(passwordInput)) {

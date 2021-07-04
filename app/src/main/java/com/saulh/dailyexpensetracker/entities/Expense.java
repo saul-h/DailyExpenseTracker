@@ -2,8 +2,10 @@ package com.saulh.dailyexpensetracker.entities;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
+import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.Relation;
 
 import java.util.Date;
 
@@ -25,4 +27,7 @@ public class Expense {
 
     @ColumnInfo
     public String date;
+
 }
+
+

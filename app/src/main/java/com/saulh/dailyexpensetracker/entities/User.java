@@ -23,4 +23,6 @@ public class User {
     @ColumnInfo
     public double desiredSavings;
 
+
+
 }
