@@ -50,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean("hasLoggedIn", true);
             editor.putString("username", mEditTextUsername.getText().toString());
+            Spashscreen.this_username = mEditTextUsername.getText().toString();
             editor.commit();
 
             user = loginWithCredentials(mEditTextUsername.getText().toString(),

@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.saulh.dailyexpensetracker.AppDatabase;
 import com.saulh.dailyexpensetracker.LoginActivity;
 import com.saulh.dailyexpensetracker.R;
+import com.saulh.dailyexpensetracker.Spashscreen;
 import com.saulh.dailyexpensetracker.daos.UserDao;
 import com.saulh.dailyexpensetracker.entities.User;
 
@@ -42,7 +43,7 @@ public class EditProfileActivity extends AppCompatActivity implements ChangePass
         //
         //email.setText(LoginActivity.user.email);
 
-        username = LoginActivity.mEditTextUsername.getText().toString();
+        username = Spashscreen.this_username;
 
         //get database instance
         db = AppDatabase.getDBInstance(context);
