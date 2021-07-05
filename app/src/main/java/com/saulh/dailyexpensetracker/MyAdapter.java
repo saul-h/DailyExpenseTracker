@@ -13,16 +13,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.saulh.dailyexpensetracker.entities.Expense;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     Context context;
     List<Expense> expense_list;
 
+    List<String> test_list;
+
+
+
     public MyAdapter(Context ct, List<Expense> expense_list){
         this.context = ct;
         this.expense_list = expense_list;
+
     }
+
+
+
 
     @Override
     public MyAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -35,16 +45,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, int position) {
 
         holder.expense = expense_list.get(position);
-        /*
+
         holder.expense_description.setText(expense_list.get(position).description);
         String this_amount = String.valueOf( expense_list.get(position).amount ) ;
         holder.expense_amount.setText(this_amount);
         holder.expense_date.setText(expense_list.get(position).date);
-        */
-        holder.expense_description.setText("this expense");
 
-        holder.expense_amount.setText("15$");
-        holder.expense_date.setText("this date");
+
+        //test only
+        // holder.expense_description.setText(test_list.get(position));
 
     }
 

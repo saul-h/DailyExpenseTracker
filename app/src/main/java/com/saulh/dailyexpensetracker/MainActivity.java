@@ -24,6 +24,7 @@ import com.saulh.dailyexpensetracker.entities.User;
 import com.saulh.dailyexpensetracker.optionMenu.AboutActivity;
 import com.saulh.dailyexpensetracker.optionMenu.EditProfileActivity;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
     User user;
     private RecyclerView recyclerView;
 
+    //test
+    List<String> test_list;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,12 +52,45 @@ public class MainActivity extends AppCompatActivity {
         ExpenseDao expenseDao = db.expenseDao();
         UserDao userDao = db.userDao();
 
-        username = getIntent().getStringExtra(LoginActivity.LOGGED_IN_USERNAME);
 
+
+        //username = getIntent().getStringExtra(LoginActivity.LOGGED_IN_USERNAME);
+        if(Spashscreen.this_username != null) {
+            username = Spashscreen.this_username;
+        }else{
+            username = getIntent().getStringExtra(LoginActivity.LOGGED_IN_USERNAME);
+        }
+
+
+        userExpenseList = new ArrayList<>();
         userExpenseList = expenseDao.getExpensesForUser(username);
 
-
         mFAB = findViewById(R.id.floatingActionButton);
+        recyclerView = findViewById(R.id.new_recylerView);
+
+
+        //test
+        test_list = new ArrayList<>();
+        test_list.add("Item 1");
+        test_list.add("Item 2");
+        test_list.add("Item 3");
+
+        //test recyler view
+        MyAdapter myAdapter = new MyAdapter(getApplicationContext(), userExpenseList);
+        recyclerView.setAdapter(myAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+        /*
+        //TODO: fix the bug here where userExpensList is alwasy empty
+        if(!userExpenseList.isEmpty()){
+            //add to list the recycler view
+            MyAdapter myAdapter = new MyAdapter(getApplicationContext() );
+            recyclerView.setAdapter(myAdapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        }else{
+            Log.d(TAG, "List is empty");
+        }
+         */
 
 
         mFAB.setOnClickListener(v -> {
@@ -62,18 +99,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        recyclerView = findViewById(R.id.recyclerViewExpenses);
 
 
-        //TODO: fix the bug here where userExpensList is alwasy empty
-        if(!userExpenseList.isEmpty()){
-            //add to list the recycler view
-            MyAdapter myAdapter = new MyAdapter(getApplicationContext(),userExpenseList );
-            recyclerView.setAdapter(myAdapter);
-            recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        }else{
-            Log.d(TAG, "List is empty");
-        }
+
 
     }
 
@@ -107,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.PREFS_NAME,0);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean("hasLoggedIn", false);
+                editor.putString("username", username );
                 editor.commit();
 
                 intent = new Intent(getApplicationContext(), LoginActivity.class);

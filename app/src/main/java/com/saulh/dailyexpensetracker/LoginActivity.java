@@ -49,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
             SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.PREFS_NAME,0);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean("hasLoggedIn", true);
+            editor.putString("username", mEditTextUsername.getText().toString());
             editor.commit();
 
             user = loginWithCredentials(mEditTextUsername.getText().toString(),

@@ -34,7 +34,7 @@ public class AddExpense extends AppCompatActivity {
 
         mAddExpense.setOnClickListener(v -> {
             expense = new Expense();
-            expense.description = (String)mExpenseAmount.getText().toString();
+            expense.description = (String)mExpenseName.getText().toString();
             expense.amount = Double.parseDouble(mExpenseAmount.getText().toString());
             expense.date = (String)mExpenseDate.getText().toString();
             expense.creatorUsername = (String) getIntent().getStringExtra(LoginActivity.LOGGED_IN_USERNAME);

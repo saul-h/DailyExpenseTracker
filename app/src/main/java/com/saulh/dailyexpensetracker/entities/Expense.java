@@ -11,6 +11,8 @@ import java.util.Date;
 
 @Entity
 public class Expense {
+
+
     @PrimaryKey(autoGenerate = true)
     public int expenseID;
 
