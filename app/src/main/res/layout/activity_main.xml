@@ -58,9 +58,9 @@
         android:id="@+id/editTextTextPersonName2"
         android:layout_width="164dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
         android:ems="8"
         android:inputType="textPersonName"
         android:text="$0.00"
@@ -71,8 +71,8 @@
         android:id="@+id/editTextTextPersonName3"
         android:layout_width="164dp"
         android:layout_height="40dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="$0.00"
@@ -83,8 +83,8 @@
         android:id="@+id/editTextTextPersonName4"
         android:layout_width="164dp"
         android:layout_height="40dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="$0.00"
@@ -113,5 +113,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="top" />
+
+    <Button
+        android:id="@+id/button_annual_income"
+        android:layout_width="48dp"
+        android:layout_height="39dp"
+        android:text="+"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName2"
+        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

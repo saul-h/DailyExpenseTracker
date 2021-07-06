@@ -56,6 +56,8 @@ public class RegisterActivity extends AppCompatActivity {
         user.username = usernameInput;
         user.email = emailInput;
         user.password = passwordInput;
+        user.annualIncome = 0.00;
+        user.desiredSavings = 0.00;
 
         db.userDao().registerUser(user);
         finish();

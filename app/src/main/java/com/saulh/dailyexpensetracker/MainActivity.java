@@ -14,6 +14,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -38,9 +42,10 @@ public class MainActivity extends AppCompatActivity {
     String username;
     List<Expense> userExpenseList;
     public static AppDatabase db;
-    User user;
+
     private RecyclerView recyclerView;
     EditText annualIncome, ed_total_expense, annualSavings;
+    Button btn_save_annual_income;
 
 
 
@@ -48,14 +53,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        username = Spashscreen.this_username;
+        Log.d(TAG,"Username from Main activity " + username);
+
         context = getApplicationContext();
         db = AppDatabase.getDBInstance(context);
         ExpenseDao expenseDao = db.expenseDao();
         UserDao userDao = db.userDao();
-
-        username = Spashscreen.this_username;
-        Log.d(TAG,"Username from Main activity " + username);
-        //username = getIntent().getStringExtra(LoginActivity.LOGGED_IN_USERNAME);
+        User user = userDao.getUserByUsername(username);
 
         userExpenseList = new ArrayList<>();
         userExpenseList = expenseDao.getExpensesForUser(username);
@@ -66,9 +72,24 @@ public class MainActivity extends AppCompatActivity {
             totalExpense += userExpenseList.get(i).amount;
         }
 
+        //set total expense to the total expense text view
         ed_total_expense = findViewById(R.id.editTextTextPersonName3);
         ed_total_expense.setText("$"+String.valueOf(totalExpense));
         ed_total_expense.setFocusable(false);
+
+        annualIncome = findViewById(R.id.editTextTextPersonName2);
+        annualIncome.setText("$"+String.valueOf(user.annualIncome) );
+
+        btn_save_annual_income = findViewById(R.id.button_annual_income);
+        btn_save_annual_income.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                user.annualIncome = Double.parseDouble(annualIncome.getText().toString());
+                db.userDao().updateUser(user);
+            }
+        });
+
+
 
         mFAB = findViewById(R.id.floatingActionButton);
 
