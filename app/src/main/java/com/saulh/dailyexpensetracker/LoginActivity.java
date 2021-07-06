@@ -59,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                 mEditTextPassword.setText("");
                 Intent intent = new Intent(context, MainActivity.class);
                 intent.putExtra(LOGGED_IN_USERNAME, user.username);
+                Toast.makeText(context, "Welcome " + user.username + "!", Toast.LENGTH_LONG).show();
                 startActivity(intent);
             }
         });
