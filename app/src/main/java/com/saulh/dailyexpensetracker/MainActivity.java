@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -39,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
     public static AppDatabase db;
     User user;
     private RecyclerView recyclerView;
+    EditText annualIncome, ed_total_expense, annualSavings;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,15 @@ public class MainActivity extends AppCompatActivity {
 
         userExpenseList = new ArrayList<>();
         userExpenseList = expenseDao.getExpensesForUser(username);
+
+        double totalExpense = 0.00;
+        //get total user expense
+        for(int i = 0;i < userExpenseList.size(); i++){
+            totalExpense += userExpenseList.get(i).amount;
+        }
+
+        ed_total_expense = findViewById(R.id.editTextTextPersonName3);
+        ed_total_expense.setText("$"+String.valueOf(totalExpense));
 
         mFAB = findViewById(R.id.floatingActionButton);
 

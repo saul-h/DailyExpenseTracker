@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -16,6 +18,8 @@ public class AddExpense extends AppCompatActivity {
     AppDatabase db;
     ExpenseDao expenseDao;
     Expense expense;
+
+    String[] expense_types = {"Gas", "Grocery", "Meal", "Hotel", "Shopping", "Repair", "Rent", "Utilities Bill", "Miscellaneous", "Tax" };
 
 
     @Override
@@ -30,6 +34,11 @@ public class AddExpense extends AppCompatActivity {
 
         db = AppDatabase.getDBInstance(getApplicationContext());
         expenseDao = db.expenseDao();
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.select_dialog_singlechoice, expense_types);
+        AutoCompleteTextView acTextView = (AutoCompleteTextView) findViewById(R.id.editTextExpenseName);
+        acTextView.setThreshold(1);
+        acTextView.setAdapter(adapter);
 
 
         mAddExpense.setOnClickListener(v -> {

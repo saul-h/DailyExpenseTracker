@@ -47,7 +47,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.expense = expense_list.get(position);
 
         holder.expense_description.setText(expense_list.get(position).description);
-        String this_amount = String.valueOf( expense_list.get(position).amount ) ;
+        String this_amount = String.valueOf( "$"+expense_list.get(position).amount) ;
         holder.expense_amount.setText(this_amount);
         holder.expense_date.setText(expense_list.get(position).date);
 
