@@ -60,6 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
         user.desiredSavings = 0.00;
 
         db.userDao().registerUser(user);
+        Toast.makeText(context, "Registration successful!", Toast.LENGTH_LONG).show();
         finish();
     }
 
