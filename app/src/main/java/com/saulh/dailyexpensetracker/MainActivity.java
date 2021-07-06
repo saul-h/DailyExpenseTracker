@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
         ed_total_expense = findViewById(R.id.editTextTextPersonName3);
         ed_total_expense.setText("$"+String.valueOf(totalExpense));
+        ed_total_expense.setFocusable(false);
 
         mFAB = findViewById(R.id.floatingActionButton);
 

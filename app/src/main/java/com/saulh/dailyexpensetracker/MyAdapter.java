@@ -50,8 +50,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         String this_amount = String.valueOf( "$"+expense_list.get(position).amount) ;
         holder.expense_amount.setText(this_amount);
         holder.expense_date.setText(expense_list.get(position).date);
-
-
         //test only
         // holder.expense_description.setText(test_list.get(position));
 

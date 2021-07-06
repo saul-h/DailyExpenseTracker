@@ -19,7 +19,7 @@ public class AddExpense extends AppCompatActivity {
     ExpenseDao expenseDao;
     Expense expense;
 
-    String[] expense_types = {"Gas", "Grocery", "Meal", "Hotel", "Shopping", "Repair", "Rent", "Utilities Bill", "Miscellaneous", "Tax" };
+    String[] expense_types = {"Gas", "Grocery", "Meal", "Hotel", "Shopping", "Repair", "Rent", "Utilities Bill", "Miscellaneous", "Tax", "Internet", "Date", "Coffee", "Oil Change", "Flower"};
 
 
     @Override

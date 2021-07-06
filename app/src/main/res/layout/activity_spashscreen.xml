@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Spashscreen"
-    android:background="@color/blue_200">
+    android:background="@color/teal_500">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Expense Tracker"
-        android:textColor="@color/blue_700"
+        android:textStyle="bold"
+        android:textColor="@color/white"
         android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,7 +26,8 @@
         android:layout_height="wrap_content"
         android:text="App"
         android:textSize="25sp"
-        android:textColor="#FF4E16"
+        android:textColor="#F44336"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
