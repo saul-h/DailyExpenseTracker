@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 user.annualIncome = Double.parseDouble(annualIncome.getText().toString());
                 db.userDao().updateUser(user);
+                Toast.makeText(context, "Annual income updated!", Toast.LENGTH_LONG).show();
             }
         });
 
